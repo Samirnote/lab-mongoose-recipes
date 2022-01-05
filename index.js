@@ -17,7 +17,26 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    //console.log(title);
+    const usere = Recipe.create({ title: "rectte" , cuisine: "francaise" });
+    console.log(usere);
+    
   })
+  .then(() => {
+    
+    Recipe.insertMany(data, function(error, docs) {});
+    
+  })
+  .then(() => {
+  
+    
+    const query = { title: "Rigatoni alla Genovese" };
+    Recipe.findOneAndUpdate(query, { $set: { duration: 100 }});  
+  })
+  .then(() => {
+    Recipe.deleteOne({ title: "Carrot Cake" });
+  })
+  
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
